@@ -12,9 +12,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            background: linear-gradient(135deg, #f5f3ef 0%, #ebe8e1 100%);
+            min-height: 100vh;
+        }
+
+        html.dark-mode {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
         body {
             font-family: 'Times New Roman', Times, serif;
-            background: linear-gradient(135deg, #f5f3ef 0%, #ebe8e1 100%);
+            background: transparent;
             color: #2c2c2c;
             min-height: 100vh;
             display: flex;
@@ -25,7 +34,7 @@
         }
 
         body.dark-mode {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: transparent;
             color: #e8e8e8;
         }
 
@@ -50,11 +59,12 @@
         }
 
         body.dark-mode .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(124, 90, 184, 0.15);
+            color: #7c5ab8;
         }
 
         body.dark-mode .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(124, 90, 184, 0.25);
         }
 
         .container {
@@ -182,7 +192,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(139, 75, 219, 0.1);
+            background: rgba(124, 90, 184, 0.1);
             border: none;
             cursor: pointer;
             display: flex;
@@ -192,10 +202,11 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeInUp 1s ease 1.4s forwards;
+            color: #7c5ab8;
         }
 
         .theme-toggle:hover {
-            background: rgba(139, 75, 219, 0.2);
+            background: rgba(124, 90, 184, 0.2);
             transform: scale(1.1);
         }
 
@@ -211,20 +222,25 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 2rem;
-                justify-content: center;
+                padding: 2rem 2rem 2rem 2rem;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .container {
+                max-width: 100%;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .subtitle {
-                font-size: 0.9rem;
+                font-size: 1.1rem;
             }
 
             .nav-link {
-                font-size: 0.95rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -303,17 +319,39 @@
             oscillator.stop(audioContext.currentTime + duration);
         }
         
-        function toggleTheme() {
+        // Load saved theme preference on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const html = document.documentElement;
             const body = document.body;
             const sunIcon = document.querySelector('.sun-icon');
             const moonIcon = document.querySelector('.moon-icon');
             
+            if (savedTheme === 'dark') {
+                html.classList.add('dark-mode');
+                body.classList.add('dark-mode');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        });
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const body = document.body;
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            html.classList.toggle('dark-mode');
             body.classList.toggle('dark-mode');
             sunIcon.classList.toggle('hidden');
             moonIcon.classList.toggle('hidden');
             
+            // Save theme preference to localStorage
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
             // Play sound: higher tone (tim) for dark mode, lower tone (tum) for light mode
-            if (body.classList.contains('dark-mode')) {
+            if (isDark) {
                 playTone(800, 0.1); // Higher frequency "tim"
             } else {
                 playTone(400, 0.15); // Lower frequency "tum"
