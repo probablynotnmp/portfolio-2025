@@ -13,12 +13,12 @@
         }
 
         html {
-            background: linear-gradient(135deg, #f5f3ef 0%, #ebe8e1 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f3ef 0%, #ebe8e1 100%) fixed;
+            min-height: 100%;
         }
 
         html.dark-mode {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) fixed;
         }
 
         body {
@@ -30,7 +30,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 4rem 2rem 2rem 18rem;
-            transition: background 0.5s ease, color 0.5s ease;
+            transition: color 0.5s ease;
         }
 
         body.dark-mode {
