@@ -16,6 +16,7 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
+            background-color: #ebe8e1;
         }
 
         html {
@@ -23,6 +24,10 @@
             background-attachment: fixed;
             background-size: cover;
             background-repeat: no-repeat;
+        }
+
+        html.dark-mode, html.dark-mode body {
+            background-color: #2d2d2d;
         }
 
         html.dark-mode {
@@ -34,7 +39,6 @@
 
         body {
             font-family: 'Times New Roman', Times, serif;
-            background: transparent;
             color: #2c2c2c;
             min-height: 100vh;
             display: flex;
@@ -310,7 +314,7 @@
     </button>
 
     <script>
-
+        // Create audio context for sound effects
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         
         function playTone(frequency, duration) {
@@ -330,7 +334,7 @@
             oscillator.stop(audioContext.currentTime + duration);
         }
         
-
+        // Load saved theme preference on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
@@ -357,15 +361,15 @@
             sunIcon.classList.toggle('hidden');
             moonIcon.classList.toggle('hidden');
             
-
+            // Save theme preference to localStorage
             const isDark = body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             
-
+            // Play sound: higher tone (tim) for dark mode, lower tone (tum) for light mode
             if (isDark) {
-                playTone(800, 0.1); 
+                playTone(800, 0.1); // Higher frequency "tim"
             } else {
-                playTone(400, 0.15); 
+                playTone(400, 0.15); // Lower frequency "tum"
             }
         }
     </script>
