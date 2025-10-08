@@ -231,11 +231,27 @@
             document.getElementById('age').textContent = ageInYears.toFixed(9);
         }
 
-        // Update age every 100ms for smooth counter
-        updateAge();
-        setInterval(updateAge, 100);
-
-        // Theme toggle functionality
+        // Create audio context for sound effects
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playTone(frequency, duration) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+        
+        // Load saved theme preference on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
@@ -274,5 +290,3 @@
             }
         }
     </script>
-</body>
-</html>
