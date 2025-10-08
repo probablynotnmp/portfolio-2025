@@ -131,21 +131,14 @@
             justify-content: center;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.4s forwards;
             color: #7c5ab8;
         }
 
         .theme-toggle:hover {
             background: rgba(124, 90, 184, 0.2);
             transform: scale(1.1);
-        }
-
-        body.dark-mode .theme-toggle {
-            background: rgba(124, 90, 184, 0.15);
-            color: #7c5ab8;
-        }
-
-        body.dark-mode .theme-toggle:hover {
-            background: rgba(124, 90, 184, 0.25);
         }
 
         .theme-icon {
@@ -161,6 +154,8 @@
         @media (max-width: 768px) {
             body {
                 padding: 2rem 2rem 2rem 1rem;
+                justify-content: flex-start;
+                align-items: center;
             }
 
             .container {
@@ -168,15 +163,15 @@
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
-            h2 {
-                font-size: 1.3rem;
+            .subtitle {
+                font-size: 1.1rem;
             }
 
-            p, li {
-                font-size: 1rem;
+            .nav-link {
+                font-size: 1.1rem;
             }
         }
     </style>
