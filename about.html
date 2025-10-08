@@ -44,6 +44,16 @@
             min-height: 100vh;
             padding: 4rem 2rem 2rem 18rem;
             transition: color 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards; /* Added animation to body like homepage */
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         body.dark-mode {
@@ -51,10 +61,7 @@
             color: #e8e8e8;
         }
 
-        body.dark-mode h1 {
-            color: #e8e8e8;
-        }
-
+        body.dark-mode h1,
         body.dark-mode h2 {
             color: #e8e8e8;
         }
@@ -68,6 +75,8 @@
             font-weight: 400;
             margin-bottom: 2rem;
             color: #1a1a1a;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards; /* Smooth staggered animation */
         }
 
         h2 {
@@ -76,6 +85,13 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: #1a1a1a;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        p, ul, li, a {
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
         }
 
         p {
@@ -116,6 +132,7 @@
             opacity: 0.7;
         }
 
+        /* FIXED: Animation missing for the theme toggle */
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -132,7 +149,7 @@
             font-size: 1.5rem;
             transition: all 0.3s ease;
             opacity: 0;
-            animation: fadeInUp 1s ease 1.4s forwards;
+            animation: fadeInUp 1s ease 1.4s forwards; /* Added identical animation to home page */
             color: #7c5ab8;
         }
 
@@ -154,8 +171,6 @@
         @media (max-width: 768px) {
             body {
                 padding: 2rem 2rem 2rem 1rem;
-                justify-content: flex-start;
-                align-items: center;
             }
 
             .container {
@@ -163,15 +178,7 @@
             }
 
             h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .nav-link {
-                font-size: 1.1rem;
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -184,14 +191,12 @@
         
         <p>I am <span id="age">22</span> and my home is Palakkad, Kerala.</p>
         
-        <h2>Some of things I've done</h2>
-        
+        <h2>Some of the things I've done</h2>
         <ul>
             <li>Co-founded <a href="#">Datum</a></li>
         </ul>
         
         <h2>Socials</h2>
-        
         <p>@prathyushmohan on <a href="#">GitHub</a>, <a href="#">X</a>, and <a href="#">LinkedIn</a>.</p>
         
         <a href="index.html" class="back-link">← Back to home</a>
@@ -215,38 +220,36 @@
     </button>
 
     <script>
-        // Calculate and update age in real-time
+        // Real-time age update
         function updateAge() {
             const birthDate = new Date('2003-04-05');
             const now = new Date();
-            
-            const ageInMilliseconds = now - birthDate;
-            const ageInYears = ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000);
-            
+            const ageInYears = (now - birthDate) / (365.25 * 24 * 60 * 60 * 1000);
             document.getElementById('age').textContent = ageInYears.toFixed(9);
         }
+        setInterval(updateAge, 100); // refresh every 100ms
+        updateAge();
 
-        // Create audio context for sound effects
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        
+        // Audio context (re-initialize safely on user gesture)
+        let audioContext;
+
         function playTone(frequency, duration) {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-            
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
             oscillator.frequency.value = frequency;
             oscillator.type = 'sine';
-            
             gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-            
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + duration);
         }
-        
-        // Load saved theme preference on page load
+
+        // Load saved theme preference
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
@@ -261,7 +264,8 @@
                 moonIcon.classList.add('hidden');
             }
         });
-        
+
+        // Toggle theme function (identical to homepage)
         function toggleTheme() {
             const html = document.documentElement;
             const body = document.body;
@@ -273,15 +277,13 @@
             sunIcon.classList.toggle('hidden');
             moonIcon.classList.toggle('hidden');
             
-            // Save theme preference to localStorage
             const isDark = body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            
-            // Play sound: higher tone (tim) for dark mode, lower tone (tum) for light mode
-            if (isDark) {
-                playTone(800, 0.1); // Higher frequency "tim"
-            } else {
-                playTone(400, 0.15); // Lower frequency "tum"
-            }
+
+            // Play sound
+            if (isDark) playTone(800, 0.1);
+            else playTone(400, 0.15);
         }
     </script>
+</body>
+</html>
