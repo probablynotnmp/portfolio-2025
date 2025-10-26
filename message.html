@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message - Prathyush N M</title>
+    <title>Messaging - Prathyush N M</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,26 +32,13 @@
             inset: 0;
             z-index: -1;
             background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
-            background-repeat: no-repeat;
             background-size: cover;
+            background-repeat: no-repeat;
         }
 
         body.dark-mode { color: #e8e8e8; }
         body.dark-mode::before { background: #1E1E1E; }
         body.dark-mode h1 { color: #e8e8e8; }
-
-        body.dark-mode textarea {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e8e8e8;
-        }
-        body.dark-mode textarea:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #7c5ab8;
-        }
-        body.dark-mode button { background: #7c5ab8; }
-        body.dark-mode button:hover { background: #6a4a9e; }
-        body.dark-mode .status-message { color: #b8b8b8; }
 
         .container { max-width: 600px; }
 
@@ -82,6 +69,7 @@
             transition: all 0.3s ease;
             margin-bottom: 1rem;
         }
+
         textarea:focus {
             outline: none;
             border-color: #7c5ab8;
@@ -97,12 +85,25 @@
             font-family: 'Times New Roman', Times, serif;
             border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.15s ease;
+            transition: all 0.3s ease;
         }
-        button:hover { background: #6a4a9e; transform: translateY(-2px); }
-        button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
-        .status-message { margin-top: 1rem; font-size: 1rem; color: #7c5ab8; }
+        button:hover {
+            background: #6a4a9e;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #7c5ab8;
+        }
 
         .back-link {
             display: inline-block;
@@ -132,6 +133,7 @@
             color: #7c5ab8;
             z-index: 10;
         }
+
         .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
 
         .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
@@ -141,7 +143,10 @@
         body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
 
         @media (max-width: 768px) {
-            body { padding: 2rem 2rem 2rem 1rem; align-items: center; }
+            body {
+                padding: 2rem 2rem 2rem 1rem;
+                align-items: center;
+            }
             .container { max-width: 100%; }
             h1 { font-size: 2rem; }
             p { font-size: 1rem; }
@@ -182,13 +187,16 @@
     <script>
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         function playTone(frequency, duration) {
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            osc.connect(gain); gain.connect(audioContext.destination);
-            osc.frequency.value = frequency; osc.type = 'sine';
-            gain.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-            osc.start(audioContext.currentTime); osc.stop(audioContext.currentTime + duration);
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
         }
 
         async function sendMessage(event) {
@@ -197,13 +205,12 @@
             const submitBtn = document.getElementById('submitBtn');
             const status = document.getElementById('status');
             if (!messageText) return;
-
             submitBtn.disabled = true;
             status.textContent = 'Sending...';
             try {
                 const timestamp = Date.now();
                 const messageId = `msg_${timestamp}`;
-                const message = { text: messageText, timestamp, date: new Date().toISOString() };
+                const message = { text: messageText, timestamp: timestamp, date: new Date().toISOString() };
                 const result = await window.storage.set(messageId, JSON.stringify(message), false);
                 if (result) {
                     status.textContent = 'Message sent successfully!';
@@ -213,8 +220,9 @@
                 } else {
                     throw new Error('Failed to send message');
                 }
-            } catch (e) {
+            } catch (error) {
                 status.textContent = 'Failed to send message. Please try again.';
+                console.error('Error sending message:', error);
             } finally {
                 submitBtn.disabled = false;
             }
