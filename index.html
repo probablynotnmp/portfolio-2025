@@ -18,12 +18,10 @@
             overflow-x: hidden;
         }
 
-        /* Keep html a solid to avoid any edge reveal */
         html {
             background-color: #EBE8E1;
         }
 
-        /* Put the gradient on a fixed layer behind everything */
         body {
             font-family: 'Times New Roman', Times, serif;
             color: #2c2c2c;
@@ -33,11 +31,10 @@
             justify-content: flex-start;
             padding: 4rem 2rem 2rem 18rem;
             transition: color 0.5s ease;
-            background-color: transparent; /* let the fixed layer show through */
+            background-color: transparent;
             position: relative;
         }
 
-        /* The always-visible background */
         body::before {
             content: "";
             position: fixed;
@@ -48,10 +45,10 @@
             background-size: cover;
         }
 
-        /* Dark mode: solid layer so no flicker */
         html.dark-mode, html.dark-mode body {
             background-color: #1E1E1E;
         }
+
         body.dark-mode::before {
             background: #1E1E1E;
         }
@@ -62,7 +59,10 @@
             transform: translateY(30px);
             animation: fadeInUp 1s ease forwards;
         }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         h1 {
             font-size: 3rem;
@@ -84,10 +84,21 @@
             opacity: 0;
         }
 
-        .company { color: #7c5ab8; text-decoration: none; transition: color 0.3s ease; }
-        .company:hover { color: #7c5ab8; opacity: 0.7; }
+        .company {
+            color: #7c5ab8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-        nav { margin-top: 0; margin-bottom: 1.5rem; }
+        .company:hover {
+            color: #7c5ab8;
+            opacity: 0.7;
+        }
+
+        nav {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
 
         .nav-link {
             display: block;
@@ -102,14 +113,31 @@
             transform: translateX(-20px);
             font-family: 'Times New Roman', Times, serif;
         }
+
         .nav-link:nth-child(1) { animation: slideInLeft 0.6s ease 0.6s forwards; }
         .nav-link:nth-child(2) { animation: slideInLeft 0.6s ease 0.7s forwards; }
         .nav-link:nth-child(3) { animation: slideInLeft 0.6s ease 0.8s forwards; }
         .nav-link:nth-child(4) { animation: slideInLeft 0.6s ease 0.9s forwards; }
-        @keyframes slideInLeft { to { opacity: 1; transform: translateX(0); } }
-        .nav-link::before { content: '↳'; position: absolute; left: 0; transition: transform 0.3s ease; }
-        .nav-link:hover { padding-left: 2rem; color: #6c2eb8; }
-        .nav-link:hover::before { transform: translateX(5px); }
+
+        @keyframes slideInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .nav-link::before {
+            content: '↳';
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            padding-left: 2rem;
+            color: #6c2eb8;
+        }
+
+        .nav-link:hover::before {
+            transform: translateX(5px);
+        }
 
         .social-links {
             margin-top: 2.5rem;
@@ -118,9 +146,24 @@
             opacity: 0;
             animation: fadeInUp 1s ease 1.2s forwards;
         }
-        .social-links a { color: #8b4bdb; text-decoration: none; font-size: 1.05rem; transition: all 0.3s ease; display: inline-block; }
-        .social-links svg { width: 22px; height: 22px; }
-        .social-links a:hover { color: #6c2eb8; transform: translateY(-3px); }
+
+        .social-links a {
+            color: #8b4bdb;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .social-links a:hover {
+            color: #6c2eb8;
+            transform: translateY(-3px);
+        }
 
         .theme-toggle {
             position: fixed;
@@ -141,20 +184,54 @@
             animation: fadeInUp 1s ease 1.4s forwards;
             color: #7c5ab8;
         }
-        .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); transform: scale(1.1); }
 
-        .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
+        .theme-toggle:hover {
+            background: rgba(124, 90, 184, 0.2);
+            transform: scale(1.1);
+        }
 
-        /* Dark theme colours for content */
-        body.dark-mode { color: #e8e8e8; }
-        body.dark-mode .subtitle { color: #c0c0c0; }
-        body.dark-mode h1 { color: #e8e8e8; }
-        body.dark-mode .company { color: #7c5ab8; }
-        body.dark-mode .nav-link { color: #7c5ab8; }
-        body.dark-mode .social-links a { color: #7c5ab8; }
-        body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); color: #7c5ab8; }
-        body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
+        .theme-icon {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .theme-icon.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+            position: absolute;
+        }
+
+        body.dark-mode {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .subtitle {
+            color: #c0c0c0;
+        }
+
+        body.dark-mode h1 {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .company {
+            color: #7c5ab8;
+        }
+
+        body.dark-mode .nav-link {
+            color: #7c5ab8;
+        }
+
+        body.dark-mode .social-links a {
+            color: #7c5ab8;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: rgba(124, 90, 184, 0.15);
+            color: #7c5ab8;
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background: rgba(124, 90, 184, 0.25);
+        }
 
         @media (max-width: 768px) {
             body {
@@ -162,10 +239,22 @@
                 justify-content: flex-start;
                 align-items: center;
             }
-            .container { max-width: 100%; }
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.1rem; }
-            .nav-link { font-size: 1.1rem; }
+
+            .container {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -173,7 +262,7 @@
     <div class="container">
         <h1>Prathyush N M</h1>
         <p class="subtitle">Co-founder of <a href="#" class="company">Datum</a></p>
-
+        
         <nav>
             <a href="about" class="nav-link">About</a>
             <a href="posts" class="nav-link">Posts</a>
