@@ -76,7 +76,8 @@
       background: rgba(255, 255, 255, 0.8);
     }
 
-    button {
+    /* Submit button (scoped so it doesn't affect the theme toggle) */
+    .action-btn {
       background: #7c5ab8;
       color: white;
       border: none;
@@ -85,19 +86,10 @@
       font-family: 'Times New Roman', Times, serif;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
-
-    button:hover {
-      background: #6a4a9e;
-      transform: translateY(-2px);
-    }
-
-    button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .action-btn:hover { background: #6a4a9e; transform: translateY(-2px); }
+    .action-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
 
     .status-message {
       margin-top: 1rem;
@@ -113,16 +105,18 @@
       text-decoration: none;
       transition: opacity 0.3s ease;
     }
-
     .back-link:hover { opacity: 0.7; }
 
+    /* THEME TOGGLE — exact same look/behavior as posts.html */
     .theme-toggle {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       width: 50px;
       height: 50px;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1 / 1;       /* guarantees perfect circle */
+      padding: 0;                /* prevent oval from generic button padding */
+      line-height: 0;            /* keep icon centered tight */
       border-radius: 50%;
       background: rgba(124, 90, 184, 0.1);
       border: none;
@@ -131,19 +125,13 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease;  /* no scale/translate on hover */
       color: #7c5ab8;
       z-index: 10;
     }
-
     .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
 
-    .theme-toggle svg {
-      width: 24px;
-      height: 24px;
-      display: block;
-    }
-
+    .theme-toggle svg { width: 24px; height: 24px; display: block; }
     .moon-icon { fill: #7c5ab8; stroke: none; }
     .sun-icon { fill: none; stroke: #7c5ab8; stroke-width: 2; }
 
@@ -171,7 +159,7 @@
 
     <form id="messageForm" onsubmit="sendMessage(event)">
       <textarea id="messageText" placeholder="Type your message here..." required maxlength="1000"></textarea>
-      <button type="submit" id="submitBtn">Send Message</button>
+      <button type="submit" id="submitBtn" class="action-btn">Send Message</button>
       <div id="status" class="status-message"></div>
     </form>
 
