@@ -76,7 +76,6 @@
       background: rgba(255, 255, 255, 0.8);
     }
 
-    /* Submit button (scoped so it doesn't affect the theme toggle) */
     .action-btn {
       background: #7c5ab8;
       color: white;
@@ -107,16 +106,15 @@
     }
     .back-link:hover { opacity: 0.7; }
 
-    /* THEME TOGGLE — exact same look/behavior as posts.html */
     .theme-toggle {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
       width: 50px;
       height: 50px;
-      aspect-ratio: 1 / 1;       /* guarantees perfect circle */
-      padding: 0;                /* prevent oval from generic button padding */
-      line-height: 0;            /* keep icon centered tight */
+      aspect-ratio: 1 / 1;       
+      padding: 0;                
+      line-height: 0;            
       border-radius: 50%;
       background: rgba(124, 90, 184, 0.1);
       border: none;
@@ -125,7 +123,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      transition: background 0.3s ease;  /* no scale/translate on hover */
+      transition: background 0.3s ease;  
       color: #7c5ab8;
       z-index: 10;
     }
@@ -220,7 +218,7 @@
           throw new Error('Failed to send message');
         }
       } catch (error) {
-        status.textContent = 'Failed to send message. Please try again.';
+        status.textContent = 'This feature is still work in progress.';
         console.error(error);
       } finally {
         submitBtn.disabled = false;
