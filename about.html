@@ -17,6 +17,9 @@
             font-family: 'Times New Roman', Times, serif;
             color: #2c2c2c;
             min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
             padding: 4rem 2rem 2rem 18rem;
             transition: color 0.5s ease;
             background-color: transparent;
@@ -31,6 +34,13 @@
             background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            body {
+                min-height: -webkit-fill-available;
+                padding-top: 3rem;
+            }
         }
 
         body.dark-mode { color: #e8e8e8; }
@@ -55,11 +65,7 @@
 
         p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
 
-        a {
-            color: #7c5ab8;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
+        a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
         a:hover { opacity: 0.7; }
 
         ul { margin-left: 2rem; margin-bottom: 1rem; }
@@ -91,7 +97,6 @@
             color: #7c5ab8;
             z-index: 10;
         }
-
         .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
 
         .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
@@ -102,20 +107,24 @@
         body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
 
         @media (max-width: 768px) {
-            body { padding: 2rem 2rem 2rem 1rem; }
+            body {
+                padding: 2rem 1.5rem 2rem 1rem;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
             .container { max-width: 100%; }
-            h1 { font-size: 2.2rem; }
+            h1 { font-size: 2.2rem; margin-top: 0.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>About Prathyush</h1>
-        
+
         <p>I am the Co-founder of <a href="#">Datum</a>, where we’re exploring new ways to harness <a href="#">collaboration</a> and <a href="#">version control</a> to make datasets more transparent, reproducible, and accessible for AI development.</p>
-        
+
         <p>I am <span id="age">22</span> and my home is Palakkad, Kerala.</p>
-        
+
         <h2>Some of the things I've done</h2>
         <ul>
             <li>Co-founded <a href="#">Datum</a>.</li>
@@ -125,7 +134,7 @@
             <li>Founded <a href="https://chat.whatsapp.com/JVG2ZKbsjqU4ngfZkYOJpA">CLUB.456</a>, an AI community at MES Engineering College, Malappuram aimed at helping students learn, collaborate, and build projects in artificial intelligence.</li>
             <li>Worked at <a href="https://mulearn.org/team">µLearn</a> as a Social Media Manager intern</li>
         </ul>
-        
+
         <h2>Socials</h2>
         <p>@prathyushnm on <a href="https://www.linkedin.com/in/prathyushnm">LinkedIn</a>, <a href="https://x.com/prathyushnm">X</a>, and <a href="https://www.instagram.com/prathyushnm?igsh=M3Q5MWdxbW4xamRr&utm_source=qr">Instagram</a>.</p>
         <a href="https://prathyush.dev/">← Back to home</a>
