@@ -115,6 +115,7 @@
         }
         .back-link:hover { opacity: 0.7; }
 
+        /* Theme toggle — identical to posts.html, plus forced icon color for reliability */
         .theme-toggle {
             position: fixed;
             bottom: 2rem;
@@ -133,14 +134,15 @@
             color: #7c5ab8;
             z-index: 10;
         }
-
         .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
 
         .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .theme-toggle svg { color: #7c5ab8; fill: currentColor; } /* ensure visible */
         .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
 
         body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); color: #7c5ab8; }
         body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
+        body.dark-mode .theme-toggle svg { color: #7c5ab8; fill: currentColor; }
 
         @media (max-width: 768px) {
             body {
@@ -164,7 +166,7 @@
             <div id="status" class="status-message"></div>
         </form>
 
-        <a href="index.html" class="back-link">← Back to home</a>
+        <a href="https://prathyush.dev" class="back-link">← Back to home</a>
     </div>
 
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
@@ -210,7 +212,7 @@
             try {
                 const timestamp = Date.now();
                 const messageId = `msg_${timestamp}`;
-                const message = { text: messageText, timestamp: timestamp, date: new Date().toISOString() };
+                const message = { text: messageText, timestamp, date: new Date().toISOString() };
                 const result = await window.storage.set(messageId, JSON.stringify(message), false);
                 if (result) {
                     status.textContent = 'Message sent successfully!';
@@ -221,7 +223,7 @@
                     throw new Error('Failed to send message');
                 }
             } catch (error) {
-                status.textContent = 'Failed to send message. Please try again.';
+                status.textContent = 'This Feature is still work in progress';
                 console.error('Error sending message:', error);
             } finally {
                 submitBtn.disabled = false;
