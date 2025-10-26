@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages Admin - Prathyush N M</title>
+    <title>Admin - Prathyush N M</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
         * {
@@ -268,7 +268,7 @@
     </style>
 </head>
 <body>
-    <!-- Login Screen -->
+
     <div class="login-container" id="loginScreen">
         <h1>Admin Login</h1>
         <form onsubmit="login(event)">
@@ -283,7 +283,6 @@
         </form>
     </div>
 
-    <!-- Admin Dashboard -->
     <div class="admin-container hidden" id="adminDashboard">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
             <h1>Anonymous Messages</h1>
@@ -323,7 +322,6 @@
     <script>
         const ADMIN_PASSWORD = 'Datum2024!Pkd';
         
-        // Create audio context
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         
         function playTone(frequency, duration) {
@@ -434,7 +432,6 @@
             return div.innerHTML;
         }
 
-        // Check if already logged in
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
