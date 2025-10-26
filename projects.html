@@ -412,12 +412,16 @@
                 card.classList.remove('bookmarked');
                 icon.textContent = '☆';
                 btn.classList.remove('active');
+                // Play "took" sound (lower, shorter)
+                playTone(600, 0.08);
             } else {
                 // Add bookmark
                 bookmarks.push(projectId);
                 card.classList.add('bookmarked');
                 icon.textContent = '★';
                 btn.classList.add('active');
+                // Play "tuck" sound (softer, less sharp)
+                playTone(750, 0.07);
             }
             
             localStorage.setItem('bookmarkedProjects', JSON.stringify(bookmarks));
