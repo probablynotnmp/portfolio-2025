@@ -16,41 +16,25 @@
             width: 100%;
             height: 100%;
             overflow-x: hidden;
+            /* keep light theme base colour consistent */
             background-color: #EBE8E1;
-            /* stop rubber-band reveal on some browsers */
-            overscroll-behavior: none;
         }
 
-        /* remove gradient from html and the fixed attachment */
+        /* same gradient on html */
         html {
-            background: none;
+            background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
+            /* was: background-attachment: fixed;  removed to allow elastic scroll without reveal */
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        /* paint the gradient on a fixed layer behind everything */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
+        /* and the same gradient on body so bounce never exposes a different layer */
+        body {
             background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
             background-size: cover;
             background-repeat: no-repeat;
-            /* helps prevent flicker during scroll */
-            will-change: transform;
-        }
 
-        html.dark-mode, html.dark-mode body {
-            background-color: #1E1E1E;
-        }
-
-        /* ensure dark theme does not show the light gradient when rubber-banding */
-        body.dark-mode::before {
-            background: #1E1E1E;
-        }
-
-        body {
             font-family: 'Times New Roman', Times, serif;
-            background-color: #EBE8E1;
             color: #2c2c2c;
             min-height: 100vh;
             display: flex;
@@ -60,8 +44,13 @@
             transition: color 0.5s ease;
         }
 
-        body.dark-mode {
+        /* dark mode keeps both layers solid to prevent any flash */
+        html.dark-mode, html.dark-mode body {
             background-color: #1E1E1E;
+            background-image: none;
+        }
+
+        body.dark-mode {
             color: #e8e8e8;
         }
 
@@ -190,7 +179,7 @@
     <div class="container">
         <h1>Prathyush N M</h1>
         <p class="subtitle">Co-founder of <a href="#" class="company">Datum</a></p>
-
+        
         <nav>
             <a href="about" class="nav-link">About</a>
             <a href="posts" class="nav-link">Posts</a>
