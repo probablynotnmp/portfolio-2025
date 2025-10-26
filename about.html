@@ -6,25 +6,12 @@
     <title>About - Prathyush N M</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-        }
+        html, body { width: 100%; height: 100%; overflow-x: hidden; }
 
-        html {
-            background-color: #EBE8E1;
-        }
-
-        html.dark-mode, html.dark-mode body {
-            background-color: #1E1E1E;
-        }
+        html { background-color: #EBE8E1; }
+        html.dark-mode, html.dark-mode body { background-color: #1E1E1E; }
 
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -42,26 +29,14 @@
             inset: 0;
             z-index: -1;
             background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
-            background-size: cover;
             background-repeat: no-repeat;
+            background-size: cover;
         }
 
-        body.dark-mode {
-            color: #e8e8e8;
-        }
+        body.dark-mode { color: #e8e8e8; }
+        body.dark-mode::before { background: #1E1E1E; }
 
-        body.dark-mode::before {
-            background: #1E1E1E;
-        }
-
-        body.dark-mode h1,
-        body.dark-mode h2 {
-            color: #e8e8e8;
-        }
-
-        .container {
-            max-width: 800px;
-        }
+        .container { max-width: 800px; }
 
         h1 {
             font-size: 2.5rem;
@@ -78,32 +53,17 @@
             color: #1a1a1a;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
+        p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
 
         a {
             color: #7c5ab8;
             text-decoration: none;
             transition: opacity 0.3s ease;
         }
+        a:hover { opacity: 0.7; }
 
-        a:hover {
-            opacity: 0.7;
-        }
-
-        ul {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        li {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
+        ul { margin-left: 2rem; margin-bottom: 1rem; }
+        li { font-size: 1.1rem; line-height: 1.8; margin-bottom: 0.5rem; }
 
         .back-link {
             display: inline-block;
@@ -111,10 +71,7 @@
             font-size: 1.1rem;
             color: #7c5ab8;
         }
-
-        .back-link:hover {
-            opacity: 0.7;
-        }
+        .back-link:hover { opacity: 0.7; }
 
         .theme-toggle {
             position: fixed;
@@ -131,46 +88,31 @@
             justify-content: center;
             font-size: 1.5rem;
             transition: all 0.3s ease;
-            color: #7c5ab8;
-            z-index: 10;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(124, 90, 184, 0.2);
-            transform: scale(1.1);
-        }
-
-        body.dark-mode .theme-toggle {
-            background: rgba(124, 90, 184, 0.15);
-            color: #7c5ab8;
-        }
-
-        body.dark-mode .theme-toggle:hover {
-            background: rgba(124, 90, 184, 0.25);
-        }
-
-        .theme-icon {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .theme-icon.hidden {
             opacity: 0;
-            transform: scale(0.5);
-            position: absolute;
+            animation: fadeInUp 1s ease 1.4s forwards;
+            color: #7c5ab8;
         }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
+
+        .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
+
+        body.dark-mode h1, body.dark-mode h2 { color: #e8e8e8; }
+        body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); color: #7c5ab8; }
+        body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
 
         @media (max-width: 768px) {
-            body {
-                padding: 2rem 2rem 2rem 1rem;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
+            body { padding: 2rem 2rem 2rem 1rem; }
+            .container { max-width: 100%; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -263,11 +205,7 @@
             moonIcon.classList.toggle('hidden');
             const isDark = body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            if (isDark) {
-                playTone(800, 0.1);
-            } else {
-                playTone(400, 0.15);
-            }
+            if (isDark) { playTone(800, 0.1); } else { playTone(400, 0.15); }
         }
     </script>
 </body>
