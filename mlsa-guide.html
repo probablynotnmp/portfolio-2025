@@ -279,6 +279,41 @@
     .toc-list a:hover {
         opacity: 0.8;
     }
+
+    /* NEW: post action buttons */
+    .post-actions {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .post-button {
+        flex: 1 1 220px;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        background: rgba(0, 0, 0, 0.03);
+        font-size: 1.05rem;
+        text-align: center;
+        cursor: pointer;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+    }
+
+    body.dark-mode .post-button {
+        border-color: rgba(255, 255, 255, 0.16);
+        background: rgba(0, 0, 0, 0.55);
+    }
+
+    .post-button svg {
+        width: 18px;
+        height: 18px;
+    }
 </style>
 </head>
 
@@ -364,6 +399,24 @@
             <p>If you have any questions about the programme, application process, or my journey, feel free to reach out to me on my socials.</p>
         </div>
 
+        <!-- NEW: buttons row -->
+        <div class="post-actions">
+            <button type="button" class="post-button" id="copy-link-button" onclick="copyArticleLink()">
+                <span>Link to this article</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l1.92-1.92a4 4 0 0 0-5.66-5.66l-1.09 1.09"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54L4.54 12.38a4 4 0 1 0 5.66 5.66l1.09-1.09"/>
+                </svg>
+            </button>
+
+            <a class="post-button" href="https://x.com/prathyushnm" target="_blank" rel="noopener noreferrer">
+                <span>Follow me on</span>
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M3 3h5.1l4.17 6.32L16.5 3H21l-7.06 9.39L21.5 21h-5.1l-4.4-6.65L7.5 21H3l7.16-9.61L3 3z"/>
+                </svg>
+            </a>
+        </div>
+
         <a href="../posts" class="back-link">← Back to posts</a>
 
     </div>
@@ -429,6 +482,31 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             if (isDark) playTone(800, 0.1);
             else playTone(400, 0.15);
+        }
+
+        function copyArticleLink() {
+            const url = window.location.href;
+            const btn = document.getElementById('copy-link-button');
+            if (!btn) return;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try { document.execCommand('copy'); } catch (e) {}
+                document.body.removeChild(textarea);
+            }
+
+            const originalText = 'Link to this article';
+            btn.firstChild.textContent = 'Link copied!';
+            setTimeout(() => {
+                btn.firstChild.textContent = originalText;
+            }, 2000);
         }
     </script>
 
