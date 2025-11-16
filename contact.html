@@ -3,424 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Guide to Becoming an MLSA - Prathyush N M</title>
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <title>Contact - Prathyush N M</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow-x: hidden; }
+        html, body { width: 100%; height: 100%; overflow-x: hidden; }
 
-    html { background-color: #EBE8E1; }
-    html.dark-mode, html.dark-mode body { background-color: #1E1E1E; }
+        html { background-color: #EBE8E1; }
+        html.dark-mode, html.dark-mode body { background-color: #1E1E1E; }
 
-    body {
-        font-family: 'Times New Roman', Times, serif;
-        color: #2c2c2c;
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 4rem 2rem 2rem 18rem;
-        transition: color 0.5s ease;
-        background-color: transparent;
-        position: relative;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    body.dark-mode { color: #e8e8e8; }
-    body.dark-mode::before { background: #1E1E1E; }
-
-    .container { max-width: 800px; }
-
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        color: #1a1a1a;
-    }
-
-    body.dark-mode h1 { color: #e8e8e8; }
-
-    .date-line {
-        font-size: 1rem;
-        color: #4a4a4a;
-        margin-bottom: 1.3rem;
-    }
-
-    body.dark-mode .date-line { color: #c0c0c0; }
-
-    .tags {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-    }
-
-    .tag {
-        padding: 0.25rem 0.8rem;
-        border-radius: 999px;
-        font-size: 0.85rem;
-        border: 1px solid rgba(124, 90, 184, 0.5);
-        background: rgba(124, 90, 184, 0.08);
-        color: #2c2c2c;
-    }
-
-    body.dark-mode .tag {
-        color: #e8e8e8;
-        background: #2b2436;
-        border: 1px solid #7c5ab8;
-    }
-
-    p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: 1rem;
-        text-align: justify;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #1a1a1a;
-    }
-
-    body.dark-mode h2 { color: #e8e8e8; }
-
-    .post-body h3 {
-        font-size: 1.4rem;
-        font-weight: 600;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: #1a1a1a;
-    }
-
-    body.dark-mode .post-body h3 {
-        color: #e8e8e8;
-    }
-
-    ul { margin-left: 2rem; margin-bottom: 1rem; }
-
-    li {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: 0.5rem;
-        text-align: justify;
-    }
-
-    .lead:first-letter {
-        float: left;
-        font-size: 2.2rem;
-        font-weight: 400;
-        line-height: 1;
-        padding-right: 0.35rem;
-        padding-top: 0.1rem;
-        color: #7c5ab8;
-}
-
-}
-
-}
-
-}
-
-    }
-
-    a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
-    a:hover { opacity: 0.7; }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 2rem;
-        font-size: 1.1rem;
-        color: #7c5ab8;
-    }
-
-    .back-link:hover { opacity: 0.7; }
-
-    .theme-toggle {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: rgba(124, 90, 184, 0.1);
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        transition: background 0.3s ease;
-        color: #7c5ab8;
-        z-index: 10;
-    }
-
-    .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
-
-    body.dark-mode .theme-toggle {
-        background: rgba(124, 90, 184, 0.15);
-        color: #7c5ab8;
-    }
-
-    body.dark-mode .theme-toggle:hover {
-        background: rgba(124, 90, 184, 0.25);
-    }
-
-    .theme-icon {
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .theme-icon.hidden {
-        opacity: 0;
-        transform: scale(0.5);
-        position: absolute;
-    }
-
-    @media (max-width: 768px) {
         body {
-            padding: 2rem 1.5rem 2rem 1rem;
-            align-items: flex-start;
+            font-family: 'Times New Roman', Times, serif;
+            color: #2c2c2c;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 4rem 2rem 2rem 18rem;
+            transition: color 0.5s ease;
+            background-color: transparent;
+            position: relative;
         }
-        .container { max-width: 100%; }
-        h1 { font-size: 2.2rem; }
-    }
 
-    .title-divider {
-        height: 1px;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.15);
-        margin: 1.5rem 0 1.8rem;
-    }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
 
-    body.dark-mode .title-divider {
-        background: rgba(255, 255, 255, 0.12);
-    }
+        body.dark-mode { color: #e8e8e8; }
+        body.dark-mode::before { background: #1E1E1E; }
+        body.dark-mode h1 { color: #e8e8e8; }
 
-    .post-body img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 1.5rem auto;
-        border-radius: 8px;
-    }
+        .container { max-width: 800px; }
 
-    .post-body blockquote {
-        margin: 1.5rem 0;
-        padding-left: 1rem;
-        border-left: 3px solid rgba(124, 90, 184, 0.5);
-        font-style: italic;
-    }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
 
-    mark {
-        background: rgba(124, 90, 184, 0.18);
-        padding: 0 0.15em;
-    }
+        p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
 
-    body.dark-mode mark {
-        background: rgba(124, 90, 184, 0.4);
-    }
+        .email { font-weight: 600; }
 
-    .toc {
-        margin: 2rem 0 2.5rem;
-        padding: 1rem 1.25rem;
-        border-radius: 10px;
-        background: rgba(124, 90, 184, 0.06);
-        border: 1px solid rgba(124, 90, 184, 0.3);
-    }
+        .x-link { display: inline; }
+        .x-link svg {
+            width: 16px;
+            height: 16px;
+            vertical-align: -1.5px;
+            margin-left: 5px;
+        }
 
-    body.dark-mode .toc {
-        background: rgba(34, 27, 53, 0.85);
-        border-color: rgba(124, 90, 184, 0.6);
-    }
+        a {
+            color: #7c5ab8;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        a:hover { opacity: 0.7; }
 
-    .toc-title {
-        font-size: 1.1rem;
-        font-weight: 400;
-        margin-bottom: 0.6rem;
-        color: #1a1a1a;
-    }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #7c5ab8;
+        }
+        .back-link:hover { opacity: 0.7; }
 
-    body.dark-mode .toc-title {
-        color: #e8e8e8;
-    }
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(124, 90, 184, 0.1);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+            color: #7c5ab8;
+            z-index: 10;
+        }
 
-    .toc-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
+        .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
 
-    .toc-list li {
-        margin-bottom: 0.3rem;
-        text-align: left;
-    }
+        .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
 
-    .toc-list a {
-        font-size: 1rem;
-        text-decoration: none;
-        color: #7c5ab8;
-    }
+        body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); color: #7c5ab8; }
+        body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
 
-    body.dark-mode .toc-list a {
-        color: #b99bff;
-    }
-
-    .toc-list a:hover {
-        opacity: 0.8;
-    }
-
-    .post-actions {
-        margin-top: 2.5rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .post-button {
-        flex: 1 1 220px;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.18);
-        background: rgba(0, 0, 0, 0.03);
-        font-size: 1.05rem;
-        text-align: center;
-        cursor: pointer;
-        color: inherit;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        text-decoration: none;
-    }
-
-    body.dark-mode .post-button {
-        border-color: rgba(255, 255, 255, 0.16);
-        background: rgba(0, 0, 0, 0.55);
-    }
-
-    .post-button svg {
-        width: 18px;
-        height: 18px;
-    }
-</style>
+        @media (max-width: 768px) {
+            body { padding: 2rem 2rem 2rem 1rem; align-items: center; }
+            .container { max-width: 100%; }
+            h1 { font-size: 2rem; }
+            p { font-size: 1rem; }
+        }
+    </style>
 </head>
-
 <body>
     <div class="container">
-
-        <h1>My Guide to Becoming a Microsoft Learn Student Ambassador</h1>
-
-        <div class="date-line">November 6, 2023</div>
-
-        <div class="tags">
-            <span class="tag">mlsa</span>
-            <span class="tag">community</span>
-            <span class="tag">students</span>
-        </div>
-
-        <div class="title-divider"></div>
-
-        <div class="post-body">
-            <p class="lead"><strong>In this blog, we'll cover nearly everything you need to know about the Microsoft Learn Student Ambassador programme from discovery to experiences, benefits, application tips, and lessons learned from my own journey as an Ambassador now a Gold MLSA.</strong></p>
-
-            <p><strong>So, what exactly is a Microsoft Learn Student Ambassador? How can you become one? What are the benefits? And is it worth your time and effort? Keep reading to find out the answers to these questions!</strong></p>
-
-            <div class="toc">
-                <div class="toc-title">Contents</div>
-                <ul class="toc-list">
-                    <li><a href="#discovery">Discovery</a></li>
-                    <li><a href="#my-experience">My experience</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
-                    <li><a href="#how-to-apply">How to apply</a></li>
-                    <li><a href="#conclusion">Conclusion</a></li>
-                </ul>
-            </div>
-
-            <p>Before talking about the Microsoft Learn Student Ambassador programme in depth, let's start with the story of how I discovered it.</p>
-
-            <h3 id="discovery">Discovery</h3>
-            <p>The story began in the year 2022 when I was in my second year of B.Tech in Artificial Intelligence and Data Science. During that time, I was not very passionate about tech. I would attend a few events here and there, but not with much seriousness. One day, I casually walked into an orientation session about the Microsoft Learn Student Ambassador programme.</p>
-            <p>At first, I thought the event would be a boring talk full of unfamiliar tech buzzwords, and I expected nothing more than a free pen or notebook. But as the session progressed, my perception completely changed. The speakers talked about the programme, its global recognition, opportunities to lead and learn, and the incredible community around it.</p>
-            <p>I was amazed to learn that the Microsoft Learn Student Ambassador programme (earlier known as MSP, now MLSA) is renowned as one of the best ambassadorships worldwide. From that moment, I knew this was something worth exploring.</p>
-
-            <h3 id="my-experience">My experience</h3>
-            <p>After that session, I felt a strong urge to become more involved in tech and community activities. I started attending more workshops and events hosted by MLSAs, and slowly, my interest in technology grew. I focused more on learning, building projects, and understanding how communities work.</p>
-            <p>Eventually, I decided to apply for the MLSA programme. The application process itself helped me reflect on what I had learned and how I had grown over the years. When I was accepted and became a Microsoft Learn Student Ambassador, it felt like a major milestone.</p>
-            <p>But that was just the beginning.</p>
-            <p>Over time, I organised sessions, conducted events, and helped other students get started with Microsoft technologies and learning resources. One of the most rewarding moments was when I got to help peers crack opportunities and get into the programme themselves.</p>
-            <p>Being an Ambassador wasn't just about hosting events. It was about:</p>
-            <ul>
-                <li>Taking initiative on campus and online</li>
-                <li>Supporting others in their learning journeys</li>
-                <li>Collaborating with MLSAs from all around the world</li>
-                <li>Building a personal brand and professional network</li>
-            </ul>
-            <p>As I continued contributing, I eventually got promoted to Gold Microsoft Learn Student Ambassador which is one of the highest tiers in the programme. This came as a huge honour, and also a responsibility to give back even more.</p>
-
-            <h3 id="benefits">Benefits</h3>
-            <p>Now let's talk about what everyone wants to know: what are the benefits of being an MLSA?</p>
-            <p>Here are some of the key benefits based on my experience:</p>
-            <ul>
-                <li><strong>Access to learning resources</strong> You get access to Microsoft resources, tools, and learning content that help you improve your technical and non technical skills.</li>
-                <li><strong>Community and networking</strong> You meet like minded people from around the world including students, professionals, and Microsoft employees. This network can open doors to opportunities you never expected.</li>
-                <li><strong>Leadership and public speaking</strong> Conducting events, workshops, and sessions will significantly boost your communication and leadership skills.</li>
-                <li><strong>Opportunities to grow</strong> From being a Beta to Alpha to Gold Ambassadors, there are pathways to grow within the programme as you contribute more.</li>
-                <li><strong>Recognition and credibility</strong> Being an MLSA and especially a Gold MLSA adds strong credibility to your profile, resume, and online presence.</li>
-            </ul>
-            <p>But one thing I always tell people is this: <strong>the programme gives back as much as you put into it</strong>. If you join just for the title, you may not gain much. If you genuinely contribute, help others, and stay active, the benefits are tremendous.</p>
-
-            <h3 id="how-to-apply">How to apply</h3>
-            <p>If you are interested in applying to the Microsoft Learn Student Ambassador programme, here is a brief guide on how to go about it:</p>
-            <ul>
-                <li><strong>Build your foundation</strong> Start by learning and exploring technologies you are interested in whether it is cloud, AI, web development, or something else.</li>
-                <li><strong>Get involved in communities</strong> Attend events, participate in hackathons, join local or online tech communities, and try to engage actively instead of just being a passive participant.</li>
-                <li><strong>Gain some experience in helping others</strong> You do not need to be an expert to help. Even sharing what you know with your juniors or peers counts.</li>
-                <li><strong>Prepare for the application</strong> When you apply, you will usually be asked questions about why you want to join, what you have done so far, and how you plan to contribute as an Ambassador.</li>
-                <li><strong>Be honest and authentic</strong> Do not exaggerate or fake your achievements. Share real stories about what you have done and what you genuinely want to do as part of the programme.</li>
-            </ul>
-            <p>If your application reflects your authenticity, intent to help others, and interest in technology and community, you stand a good chance.</p>
-
-            <h3 id="conclusion">Conclusion</h3>
-            <p>Becoming a Microsoft Learn Student Ambassador has been one of the most transformative experiences in my academic life. It helped me grow technically, improve my confidence, gain leadership experience, and connect with amazing people from across the world.</p>
-            <p>If you are passionate about technology, enjoy helping others, and are curious about global opportunities, I highly recommend exploring the MLSA programme.</p>
-            <p>Even if you do not get selected in your first attempt, do not be discouraged. Keep learning, contributing, and trying again. The journey itself will be worth it.</p>
-            <p>If you have any questions about the programme, application process, or my journey, feel free to reach out to me on my socials.</p>
-        </div>
-
-        <div class="post-actions">
-            <a href="https://prathyush.dev/mlsa-guide" class="post-button" id="copy-link-button" onclick="copyArticleLink(event)">
-                <span class="post-button-label">Link to this article</span>
-                <span class="post-button-icon">🔗</span>
-            </a>
-
-            <a class="post-button" href="https://x.com/prathyushnm" target="_blank" rel="noopener noreferrer">
-                <span>Follow me on X</span>
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-            </a>
-        </div>
-
-        <a href="../posts" class="back-link">← Back to posts</a>
-
+        <h1>Contact me</h1>
+        <p>You can email me at <span class="email">contact.prathyushmohan@gmail.com</span></p>
+        <p>Or you can just DM me on <a href="https://x.com/prathyushnm" class="x-link">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+        </a></p>
+        <a href="https://prathyush.dev" class="back-link">← Back to home</a>
     </div>
 
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
         <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
-
         <svg class="theme-icon sun-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/>
@@ -436,7 +142,6 @@
 
     <script>
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
         function playTone(frequency, duration) {
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
@@ -451,65 +156,32 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const saved = localStorage.getItem('theme');
+            const savedTheme = localStorage.getItem('theme');
             const html = document.documentElement;
             const body = document.body;
-            const sun = document.querySelector('.sun-icon');
-            const moon = document.querySelector('.moon-icon');
-            if (saved === 'dark') {
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            if (savedTheme === 'dark') {
                 html.classList.add('dark-mode');
                 body.classList.add('dark-mode');
-                sun.classList.remove('hidden');
-                moon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
             }
         });
 
         function toggleTheme() {
             const html = document.documentElement;
             const body = document.body;
-            const sun = document.querySelector('.sun-icon');
-            const moon = document.querySelector('.moon-icon');
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
             html.classList.toggle('dark-mode');
             body.classList.toggle('dark-mode');
-            sun.classList.toggle('hidden');
-            moon.classList.toggle('hidden');
+            sunIcon.classList.toggle('hidden');
+            moonIcon.classList.toggle('hidden');
             const isDark = body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            if (isDark) playTone(800, 0.1);
-            else playTone(400, 0.15);
-        }
-
-        function copyArticleLink(event) {
-            if (event) event.preventDefault();
-            const url = 'https://prathyush.dev/mlsa-guide';
-            const btn = document.getElementById('copy-link-button');
-            const label = btn ? btn.querySelector('.post-button-label') : null;
-            const icon = btn ? btn.querySelector('.post-button-icon') : null;
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(url);
-            } else {
-                const textarea = document.createElement('textarea');
-                textarea.value = url;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.select();
-                try { document.execCommand('copy'); } catch (e) {}
-                document.body.removeChild(textarea);
-            }
-
-            if (label) {
-                const originalText = 'Link to this article';
-                label.textContent = 'Link copied!';
-                if (icon) icon.textContent = '🔗';
-                setTimeout(() => {
-                    label.textContent = originalText;
-                    if (icon) icon.textContent = '🔗';
-                }, 2000);
-            }
+            if (isDark) { playTone(800, 0.1); } else { playTone(400, 0.15); }
         }
     </script>
-
 </body>
 </html>
