@@ -88,7 +88,7 @@
 
     h2 {
         font-size: 1.5rem;
-        font-weight: 600;
+        font-weight: 400;
         margin-top: 2rem;
         margin-bottom: 1rem;
         color: #1a1a1a;
@@ -96,7 +96,20 @@
 
     body.dark-mode h2 { color: #e8e8e8; }
 
+    .post-body h3 {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+
+    body.dark-mode .post-body h3 {
+        color: #e8e8e8;
+    }
+
     ul { margin-left: 2rem; margin-bottom: 1rem; }
+
     li {
         font-size: 1.1rem;
         line-height: 1.8;
@@ -105,61 +118,34 @@
     }
 
     .lead:first-letter {
-        float: none;
-        font-size: inherit;
-        font-weight: inherit;
-        padding: 0;
-        margin: 0;
-        color: inherit;
+        float: left;
+        font-size: 2.2rem;
+        font-weight: 400;
+        line-height: 1;
+        padding-right: 0.35rem;
+        padding-top: 0.1rem;
+        color: #7c5ab8;
+}
+
+}
+
+}
+
+}
+
     }
 
     a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
     a:hover { opacity: 0.7; }
 
-    .title-divider {
-        height: 1px;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.15);
-        margin: 1.5rem 0 1.8rem;
-    }
-
-    body.dark-mode .title-divider {
-        background: rgba(255, 255, 255, 0.12);
-    }
-
-    .action-buttons {
+    .back-link {
+        display: inline-block;
         margin-top: 3rem;
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
+        font-size: 1.1rem;
+        color: #7c5ab8;
     }
 
-    .action-btn {
-        padding: 1rem 2rem;
-        border: 2px solid rgba(124, 90, 184, 0.4);
-        background: rgba(124, 90, 184, 0.08);
-        color: inherit;
-        font-size: 1.2rem;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.3s ease;
-        text-align: center;
-        flex: 1;
-    }
-
-    .action-btn:hover {
-        background: rgba(124, 90, 184, 0.18);
-    }
-
-    body.dark-mode .action-btn {
-        background: #1a1a1a;
-        border-color: rgba(124, 90, 184, 0.4);
-        color: #e8e8e8;
-    }
-
-    body.dark-mode .action-btn:hover {
-        background: rgba(124, 90, 184, 0.2);
-    }
+    .back-link:hover { opacity: 0.7; }
 
     .theme-toggle {
         position: fixed;
@@ -191,15 +177,107 @@
         background: rgba(124, 90, 184, 0.25);
     }
 
-    .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
-    .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
+    .theme-icon {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-icon.hidden {
+        opacity: 0;
+        transform: scale(0.5);
+        position: absolute;
+    }
 
     @media (max-width: 768px) {
         body {
             padding: 2rem 1.5rem 2rem 1rem;
+            align-items: flex-start;
         }
         .container { max-width: 100%; }
         h1 { font-size: 2.2rem; }
+    }
+
+    .title-divider {
+        height: 1px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.15);
+        margin: 1.5rem 0 1.8rem;
+    }
+
+    body.dark-mode .title-divider {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .post-body img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1.5rem auto;
+        border-radius: 8px;
+    }
+
+    .post-body blockquote {
+        margin: 1.5rem 0;
+        padding-left: 1rem;
+        border-left: 3px solid rgba(124, 90, 184, 0.5);
+        font-style: italic;
+    }
+
+    mark {
+        background: rgba(124, 90, 184, 0.18);
+        padding: 0 0.15em;
+    }
+
+    body.dark-mode mark {
+        background: rgba(124, 90, 184, 0.4);
+    }
+
+    .toc {
+        margin: 2rem 0 2.5rem;
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        background: rgba(124, 90, 184, 0.06);
+        border: 1px solid rgba(124, 90, 184, 0.3);
+    }
+
+    body.dark-mode .toc {
+        background: rgba(34, 27, 53, 0.85);
+        border-color: rgba(124, 90, 184, 0.6);
+    }
+
+    .toc-title {
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-bottom: 0.6rem;
+        color: #1a1a1a;
+    }
+
+    body.dark-mode .toc-title {
+        color: #e8e8e8;
+    }
+
+    .toc-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .toc-list li {
+        margin-bottom: 0.3rem;
+        text-align: left;
+    }
+
+    .toc-list a {
+        font-size: 1rem;
+        text-decoration: none;
+        color: #7c5ab8;
+    }
+
+    body.dark-mode .toc-list a {
+        color: #b99bff;
+    }
+
+    .toc-list a:hover {
+        opacity: 0.8;
     }
 </style>
 </head>
@@ -209,7 +287,7 @@
 
         <h1>My Guide to Becoming a Microsoft Learn Student Ambassador</h1>
 
-        <div class="date-line">Mon Nov 6, 2023 - My Guide to Becoming an MLSA</div>
+        <div class="date-line">November 6, 2023</div>
 
         <div class="tags">
             <span class="tag">mlsa</span>
@@ -219,41 +297,77 @@
 
         <div class="title-divider"></div>
 
-        <!-- FULL ARTICLE FROM YOUR JSON -->
-        <p class="lead">
-        In this blog, we'll cover nearly everything you need to know about the Microsoft Learn Student Ambassador programme from discovery to experiences, benefits, application tips, and lessons learned from my own journey as an Ambassador now a Gold MLSA.
-        </p>
+        <div class="post-body">
+            <p class="lead"><strong>In this blog, we'll cover nearly everything you need to know about the Microsoft Learn Student Ambassador programme from discovery to experiences, benefits, application tips, and lessons learned from my own journey as an Ambassador now a Gold MLSA.</strong></p>
 
-        <p>So, what exactly is a Microsoft Learn Student Ambassador? How can you become one? What are the benefits? And is it worth your time and effort? Keep reading to find out the answers to these questions!</p>
+            <p><strong>So, what exactly is a Microsoft Learn Student Ambassador? How can you become one? What are the benefits? And is it worth your time and effort? Keep reading to find out the answers to these questions!</strong></p>
 
-        <h2>Discovery</h2>
-        <p>I first discovered the MLSA program during my engineering days...</p>
+            <div class="toc">
+                <div class="toc-title">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#discovery">Discovery</a></li>
+                    <li><a href="#my-experience">My experience</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#how-to-apply">How to apply</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
 
-        <h2>My Experience</h2>
-        <p>Short version example text here, plug your JSON content...</p>
+            <p>Before talking about the Microsoft Learn Student Ambassador programme in depth, let's start with the story of how I discovered it.</p>
 
-        <h2>Benefits</h2>
-        <p>You get access to mentors, workshops, networks, and more...</p>
+            <h3 id="discovery">Discovery</h3>
+            <p>The story began in the year 2022 when I was in my second year of B.Tech in Artificial Intelligence and Data Science. During that time, I was not very passionate about tech. I would attend a few events here and there, but not with much seriousness. One day, I casually walked into an orientation session about the Microsoft Learn Student Ambassador programme.</p>
+            <p>At first, I thought the event would be a boring talk full of unfamiliar tech buzzwords, and I expected nothing more than a free pen or notebook. But as the session progressed, my perception completely changed. The speakers talked about the programme, its global recognition, opportunities to lead and learn, and the incredible community around it.</p>
+            <p>I was amazed to learn that the Microsoft Learn Student Ambassador programme (earlier known as MSP, now MLSA) is renowned as one of the best ambassadorships worldwide. From that moment, I knew this was something worth exploring.</p>
 
-        <h2>Application Tips</h2>
-        <ul>
-            <li>Show real impact, even if small</li>
-            <li>Explain your story clearly</li>
-            <li>Demonstrate consistency</li>
-        </ul>
+            <h3 id="my-experience">My experience</h3>
+            <p>After that session, I felt a strong urge to become more involved in tech and community activities. I started attending more workshops and events hosted by MLSAs, and slowly, my interest in technology grew. I focused more on learning, building projects, and understanding how communities work.</p>
+            <p>Eventually, I decided to apply for the MLSA programme. The application process itself helped me reflect on what I had learned and how I had grown over the years. When I was accepted and became a Microsoft Learn Student Ambassador, it felt like a major milestone.</p>
+            <p>But that was just the beginning.</p>
+            <p>Over time, I organised sessions, conducted events, and helped other students get started with Microsoft technologies and learning resources. One of the most rewarding moments was when I got to help peers crack opportunities and get into the programme themselves.</p>
+            <p>Being an Ambassador wasn't just about hosting events. It was about:</p>
+            <ul>
+                <li>Taking initiative on campus and online</li>
+                <li>Supporting others in their learning journeys</li>
+                <li>Collaborating with MLSAs from all around the world</li>
+                <li>Building a personal brand and professional network</li>
+            </ul>
+            <p>As I continued contributing, I eventually got promoted to Gold Microsoft Learn Student Ambassador which is one of the highest tiers in the programme. This came as a huge honour, and also a responsibility to give back even more.</p>
 
-        <h2>Final Thoughts</h2>
-        <p>Your clean justified content goes here in perfect typography...</p>
+            <h3 id="benefits">Benefits</h3>
+            <p>Now let's talk about what everyone wants to know: what are the benefits of being an MLSA?</p>
+            <p>Here are some of the key benefits based on my experience:</p>
+            <ul>
+                <li><strong>Access to learning resources</strong> You get access to Microsoft resources, tools, and learning content that help you improve your technical and non technical skills.</li>
+                <li><strong>Community and networking</strong> You meet like minded people from around the world including students, professionals, and Microsoft employees. This network can open doors to opportunities you never expected.</li>
+                <li><strong>Leadership and public speaking</strong> Conducting events, workshops, and sessions will significantly boost your communication and leadership skills.</li>
+                <li><strong>Opportunities to grow</strong> From being a Beta to Alpha to Gold Ambassadors, there are pathways to grow within the programme as you contribute more.</li>
+                <li><strong>Recognition and credibility</strong> Being an MLSA and especially a Gold MLSA adds strong credibility to your profile, resume, and online presence.</li>
+            </ul>
+            <p>But one thing I always tell people is this: <strong>the programme gives back as much as you put into it</strong>. If you join just for the title, you may not gain much. If you genuinely contribute, help others, and stay active, the benefits are tremendous.</p>
 
-        <!-- ACTION BUTTONS -->
-        <div class="action-buttons">
-            <button class="action-btn" onclick="copyLink()">Copy link to this article 🔗</button>
-            <a href="https://x.com/prathyushnm" class="action-btn">Follow me on X</a>
+            <h3 id="how-to-apply">How to apply</h3>
+            <p>If you are interested in applying to the Microsoft Learn Student Ambassador programme, here is a brief guide on how to go about it:</p>
+            <ul>
+                <li><strong>Build your foundation</strong> Start by learning and exploring technologies you are interested in whether it is cloud, AI, web development, or something else.</li>
+                <li><strong>Get involved in communities</strong> Attend events, participate in hackathons, join local or online tech communities, and try to engage actively instead of just being a passive participant.</li>
+                <li><strong>Gain some experience in helping others</strong> You do not need to be an expert to help. Even sharing what you know with your juniors or peers counts.</li>
+                <li><strong>Prepare for the application</strong> When you apply, you will usually be asked questions about why you want to join, what you have done so far, and how you plan to contribute as an Ambassador.</li>
+                <li><strong>Be honest and authentic</strong> Do not exaggerate or fake your achievements. Share real stories about what you have done and what you genuinely want to do as part of the programme.</li>
+            </ul>
+            <p>If your application reflects your authenticity, intent to help others, and interest in technology and community, you stand a good chance.</p>
+
+            <h3 id="conclusion">Conclusion</h3>
+            <p>Becoming a Microsoft Learn Student Ambassador has been one of the most transformative experiences in my academic life. It helped me grow technically, improve my confidence, gain leadership experience, and connect with amazing people from across the world.</p>
+            <p>If you are passionate about technology, enjoy helping others, and are curious about global opportunities, I highly recommend exploring the MLSA programme.</p>
+            <p>Even if you do not get selected in your first attempt, do not be discouraged. Keep learning, contributing, and trying again. The journey itself will be worth it.</p>
+            <p>If you have any questions about the programme, application process, or my journey, feel free to reach out to me on my socials.</p>
         </div>
+
+        <a href="../posts" class="back-link">← Back to posts</a>
 
     </div>
 
-    <!-- THEME BUTTON -->
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
         <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -273,11 +387,6 @@
     </button>
 
     <script>
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href);
-            alert("Link copied!");
-        }
-
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         function playTone(frequency, duration) {
