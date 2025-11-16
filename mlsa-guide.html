@@ -6,173 +6,184 @@
     <title>My Guide to Becoming an MLSA - Prathyush N M</title>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; overflow-x: hidden; }
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow-x: hidden; }
 
-        html { background-color: #EBE8E1; }
-        html.dark-mode, html.dark-mode body { background-color: #1E1E1E; }
+    html { background-color: #EBE8E1; }
+    html.dark-mode, html.dark-mode body { background-color: #1E1E1E; }
 
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        color: #2c2c2c;
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 4rem 2rem 2rem 18rem;
+        transition: color 0.5s ease;
+        background-color: transparent;
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    body.dark-mode { color: #e8e8e8; }
+    body.dark-mode::before { background: #1E1E1E; }
+
+    .container { max-width: 800px; }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+
+    body.dark-mode h1 { color: #e8e8e8; }
+
+    .date-line {
+        font-size: 1rem;
+        color: #4a4a4a;
+        margin-bottom: 1.3rem;
+    }
+
+    body.dark-mode .date-line { color: #c0c0c0; }
+
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .tag {
+        padding: 0.25rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(124, 90, 184, 0.5);
+        background: rgba(124, 90, 184, 0.08);
+        color: #2c2c2c;
+    }
+
+    body.dark-mode .tag {
+        color: #e8e8e8;
+        background: #2b2436;
+        border: 1px solid #7c5ab8;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+
+    body.dark-mode h2 { color: #e8e8e8; }
+
+    ul { margin-left: 2rem; margin-bottom: 1rem; }
+    li {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 0.5rem;
+    }
+
+    .lead:first-letter {
+        float: left;
+        font-size: 3rem;
+        line-height: 1;
+        padding-right: 0.4rem;
+        padding-top: 0.3rem;
+        font-weight: bold;
+        color: #7c5ab8;
+    }
+
+    a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
+    a:hover { opacity: 0.7; }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 3rem;
+        font-size: 1.1rem;
+        color: #7c5ab8;
+    }
+
+    .back-link:hover { opacity: 0.7; }
+
+    .theme-toggle {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(124, 90, 184, 0.1);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background 0.3s ease;
+        color: #7c5ab8;
+        z-index: 10;
+    }
+
+    .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
+
+    body.dark-mode .theme-toggle {
+        background: rgba(124, 90, 184, 0.15);
+        color: #7c5ab8;
+    }
+
+    body.dark-mode .theme-toggle:hover {
+        background: rgba(124, 90, 184, 0.25);
+    }
+
+    .theme-icon {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-icon.hidden {
+        opacity: 0;
+        transform: scale(0.5);
+        position: absolute;
+    }
+
+    @media (max-width: 768px) {
         body {
-            font-family: 'Times New Roman', Times, serif;
-            color: #2c2c2c;
-            min-height: 100vh;
-            display: flex;
+            padding: 2rem 1.5rem 2rem 1rem;
             align-items: flex-start;
-            justify-content: flex-start;
-            padding: 4rem 2rem 2rem 18rem;
-            transition: color 0.5s ease;
-            background-color: transparent;
-            position: relative;
         }
+        .container { max-width: 100%; }
+        h1 { font-size: 2.2rem; }
+    }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: linear-gradient(135deg, #f5f3ef 0%, #EBE8E1 100%);
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+    .title-divider {
+        height: 1px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.15);
+        margin: 1.5rem 0 1.8rem;
+    }
 
-        body.dark-mode { color: #e8e8e8; }
-        body.dark-mode::before { background: #1E1E1E; }
-
-        .container { max-width: 800px; }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode h1 { color: #e8e8e8; }
-
-        .date-line {
-            font-size: 1rem;
-            color: #4a4a4a;
-            margin-bottom: 1.3rem;
-        }
-
-        body.dark-mode .date-line { color: #c0c0c0; }
-
-        .tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .tag {
-            padding: 0.25rem 0.8rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(124, 90, 184, 0.5);
-            background: rgba(124, 90, 184, 0.08);
-            color: #2c2c2c;
-        }
-
-        body.dark-mode .tag {
-            color: #e8e8e8;
-            background: #2b2436;
-            border: 1px solid #7c5ab8;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode h2 { color: #e8e8e8; }
-
-        ul { margin-left: 2rem; margin-bottom: 1rem; }
-        li {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .lead:first-letter {
-            float: left;
-            font-size: 3rem;
-            line-height: 1;
-            padding-right: 0.4rem;
-            padding-top: 0.3rem;
-            font-weight: bold;
-            color: #7c5ab8;
-        }
-
-        a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
-        a:hover { opacity: 0.7; }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 3rem;
-            font-size: 1.1rem;
-            color: #7c5ab8;
-        }
-
-        .back-link:hover { opacity: 0.7; }
-
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(124, 90, 184, 0.1);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: background 0.3s ease;
-            color: #7c5ab8;
-            z-index: 10;
-        }
-
-        .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
-
-        body.dark-mode .theme-toggle {
-            background: rgba(124, 90, 184, 0.15);
-            color: #7c5ab8;
-        }
-
-        body.dark-mode .theme-toggle:hover {
-            background: rgba(124, 90, 184, 0.25);
-        }
-
-        .theme-icon {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .theme-icon.hidden {
-            opacity: 0;
-            transform: scale(0.5);
-            position: absolute;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 2rem 1.5rem 2rem 1rem;
-                align-items: flex-start;
-            }
-            .container { max-width: 100%; }
-            h1 { font-size: 2.2rem; }
-        }
-    </style>
+    body.dark-mode .title-divider {
+        background: rgba(255, 255, 255, 0.12);
+    }
+</style>
 </head>
 
 <body>
@@ -182,13 +193,13 @@
 
         <div class="date-line">November 6, 2023</div>
 
-        <div class="title-divider"></div>
-
         <div class="tags">
             <span class="tag">mlsa</span>
             <span class="tag">community</span>
             <span class="tag">students</span>
         </div>
+
+        <div class="title-divider"></div>
 
         <p class="lead">
             This is a placeholder introduction. Your real Hashnode article content will go here.
