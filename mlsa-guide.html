@@ -98,7 +98,7 @@
 
     .post-body h3 {
         font-size: 1.4rem;
-        font-weight: 400;
+        font-weight: 600;
         margin-top: 2rem;
         margin-bottom: 1rem;
         color: #1a1a1a;
@@ -140,7 +140,7 @@
 
     .back-link {
         display: inline-block;
-        margin-top: 3rem;
+        margin-top: 2rem;
         font-size: 1.1rem;
         color: #7c5ab8;
     }
@@ -280,7 +280,6 @@
         opacity: 0.8;
     }
 
-    /* NEW: post action buttons */
     .post-actions {
         margin-top: 2.5rem;
         display: flex;
@@ -399,25 +398,21 @@
             <p>If you have any questions about the programme, application process, or my journey, feel free to reach out to me on my socials.</p>
         </div>
 
-        <!-- NEW: buttons row -->
         <div class="post-actions">
-            <button type="button" class="post-button" id="copy-link-button" onclick="copyArticleLink()">
-                <span>Link to this article</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M10 13a5 5 0 0 0 7.54.54l1.92-1.92a4 4 0 0 0-5.66-5.66l-1.09 1.09"/>
-                    <path d="M14 11a5 5 0 0 0-7.54-.54L4.54 12.38a4 4 0 1 0 5.66 5.66l1.09-1.09"/>
-                </svg>
-            </button>
+            <a href="https://prathyush.dev/mlsa-guide" class="post-button" id="copy-link-button" onclick="copyArticleLink(event)">
+                <span class="post-button-label">Link to this article</span>
+                <span class="post-button-icon">🔗</span>
+            </a>
 
             <a class="post-button" href="https://x.com/prathyushnm" target="_blank" rel="noopener noreferrer">
-                <span>Follow me on</span>
+                <span>Follow me on X</span>
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M3 3h5.1l4.17 6.32L16.5 3H21l-7.06 9.39L21.5 21h-5.1l-4.4-6.65L7.5 21H3l7.16-9.61L3 3z"/>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
             </a>
         </div>
 
-        <a href="../posts" class="back-link">← Back to posts</a>
+        <a href="posts" class="back-link">← Back to posts</a>
 
     </div>
 
@@ -484,10 +479,12 @@
             else playTone(400, 0.15);
         }
 
-        function copyArticleLink() {
-            const url = window.location.href;
+        function copyArticleLink(event) {
+            if (event) event.preventDefault();
+            const url = 'https://prathyush.dev/mlsa-guide';
             const btn = document.getElementById('copy-link-button');
-            if (!btn) return;
+            const label = btn ? btn.querySelector('.post-button-label') : null;
+            const icon = btn ? btn.querySelector('.post-button-icon') : null;
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(url);
@@ -502,11 +499,15 @@
                 document.body.removeChild(textarea);
             }
 
-            const originalText = 'Link to this article';
-            btn.firstChild.textContent = 'Link copied!';
-            setTimeout(() => {
-                btn.firstChild.textContent = originalText;
-            }, 2000);
+            if (label) {
+                const originalText = 'Link to this article';
+                label.textContent = 'Link copied!';
+                if (icon) icon.textContent = '🔗';
+                setTimeout(() => {
+                    label.textContent = originalText;
+                    if (icon) icon.textContent = '🔗';
+                }, 2000);
+            }
         }
     </script>
 
