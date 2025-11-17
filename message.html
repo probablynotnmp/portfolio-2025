@@ -69,7 +69,7 @@
       color: #d0d0d0;
     }
 
-    /* MLSA box styling applied to textarea without touching dimensions */
+    /* MLSA-style box colours, dimensions unchanged */
     textarea {
       width: 100%;
       min-height: 200px;
@@ -100,20 +100,33 @@
       background: rgba(34, 27, 53, 0.95);
     }
 
+    /* Send button styled exactly like .post-button from about.html */
     .action-btn {
-      background: #7c5ab8;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1.1rem;
-      font-family: 'Times New Roman', Times, serif;
-      border-radius: 8px;
+      flex: 0 0 auto;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(124, 90, 184, 0.3);
+      background: rgba(124, 90, 184, 0.06);
+      font-size: 1.05rem;
+      text-align: center;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
+      color: #2c2c2c;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
     }
 
-    .action-btn:hover { background: #6a4a9e; transform: translateY(-2px); }
-    .action-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+    .action-btn:hover {
+      opacity: 0.9;
+    }
+
+    body.dark-mode .action-btn {
+      border-color: rgba(124, 90, 184, 0.6);
+      background: rgba(34, 27, 53, 0.85);
+      color: #e8e8e8;
+    }
 
     .status-message {
       margin-top: 1rem;
@@ -131,6 +144,7 @@
     }
     .back-link:hover { opacity: 0.7; }
 
+    /* Theme toggle copied exactly from about.html */
     .theme-toggle {
       position: fixed;
       bottom: 2rem;
@@ -149,15 +163,12 @@
       color: #7c5ab8;
       z-index: 10;
     }
-
     .theme-toggle:hover { background: rgba(124, 90, 184, 0.2); }
-
-    .theme-toggle svg { width: 24px; height: 24px; display: block; }
 
     .theme-icon { transition: opacity 0.3s ease, transform 0.3s ease; }
     .theme-icon.hidden { opacity: 0; transform: scale(0.5); position: absolute; }
 
-    body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); }
+    body.dark-mode .theme-toggle { background: rgba(124, 90, 184, 0.15); color: #7c5ab8; }
     body.dark-mode .theme-toggle:hover { background: rgba(124, 90, 184, 0.25); }
 
     @media (max-width: 768px) {
@@ -191,10 +202,10 @@
   </div>
 
   <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-    <svg class="theme-icon moon-icon" viewBox="0 0 24 24">
+    <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
     </svg>
-    <svg class="theme-icon sun-icon hidden" viewBox="0 0 24 24">
+    <svg class="theme-icon sun-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <circle cx="12" cy="12" r="5"/>
       <line x1="12" y1="1" x2="12" y2="3"/>
       <line x1="12" y1="21" x2="12" y2="23"/>
@@ -202,22 +213,24 @@
       <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
       <line x1="1" y1="12" x2="3" y2="12"/>
       <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
     </svg>
   </button>
 
   <script>
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     function playTone(frequency, duration) {
-      const osc = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      osc.connect(gain);
-      gain.connect(audioContext.destination);
-      osc.frequency.value = frequency;
-      osc.type = 'sine';
-      gain.gain.setValueAtTime(0.1, audioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-      osc.start();
-      osc.stop(audioContext.currentTime + duration);
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      oscillator.frequency.value = frequency;
+      oscillator.type = 'sine';
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + duration);
     }
 
     async function sendMessage(event) {
@@ -257,7 +270,6 @@
       const body = document.body;
       const sunIcon = document.querySelector('.sun-icon');
       const moonIcon = document.querySelector('.moon-icon');
-
       if (savedTheme === 'dark') {
         html.classList.add('dark-mode');
         body.classList.add('dark-mode');
@@ -271,16 +283,13 @@
       const body = document.body;
       const sunIcon = document.querySelector('.sun-icon');
       const moonIcon = document.querySelector('.moon-icon');
-
       html.classList.toggle('dark-mode');
       body.classList.toggle('dark-mode');
-
       sunIcon.classList.toggle('hidden');
       moonIcon.classList.toggle('hidden');
-
       const isDark = body.classList.contains('dark-mode');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      playTone(isDark ? 800 : 400, isDark ? 0.1 : 0.15);
+      if (isDark) { playTone(800, 0.1); } else { playTone(400, 0.15); }
     }
   </script>
 </body>
