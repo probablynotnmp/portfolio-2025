@@ -47,13 +47,20 @@
         body.dark-mode::before { background: #1E1E1E; }
         body.dark-mode h1, body.dark-mode h2 { color: #e8e8e8; }
 
+        /* updated to match MLSA accent */
         body.dark-mode .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(34, 27, 53, 0.85);
+            border: 1px solid rgba(124, 90, 184, 0.6);
         }
-        body.dark-mode .project-card:hover { background: rgba(255, 255, 255, 0.08); }
-        body.dark-mode .project-description { color: #b8b8b8; }
-        body.dark-mode .tag { background: rgba(124, 90, 184, 0.2); color: #b8a5d4; }
+        body.dark-mode .project-card:hover { background: rgba(34, 27, 53, 0.95); }
+        body.dark-mode .project-description { color: #e8e8e8; }
+
+        /* updated tags to match MLSA tags */
+        body.dark-mode .tag {
+            color: #e8e8e8;
+            background: #2b2436;
+            border: 1px solid #7c5ab8;
+        }
 
         .container { max-width: 1000px; }
 
@@ -75,15 +82,16 @@
             margin-bottom: 3rem;
         }
 
+        /* updated card styling to MLSA-like purple box */
         .project-card {
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(124, 90, 184, 0.06);
+            border: 1px solid rgba(124, 90, 184, 0.3);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: all 0.3s ease;
             position: relative;
         }
-        .project-card:hover { background: rgba(0, 0, 0, 0.04); }
+        .project-card:hover { background: rgba(124, 90, 184, 0.09); }
         .project-card.bookmarked { order: -1; }
 
         .project-header {
@@ -119,15 +127,19 @@
             line-height: 1.6;
             color: #4a4a4a;
             margin-bottom: 1rem;
+            text-align: justify; /* made descriptions justified */
         }
 
         .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        /* updated tags to MLSA style */
         .tag {
-            background: rgba(124, 90, 184, 0.1);
-            color: #7c5ab8;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
+            padding: 0.25rem 0.8rem;
+            border-radius: 999px;
             font-size: 0.85rem;
+            border: 1px solid rgba(124, 90, 184, 0.5);
+            background: rgba(124, 90, 184, 0.08);
+            color: #2c2c2c;
         }
 
         .back-link {
