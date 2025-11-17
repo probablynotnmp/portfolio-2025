@@ -47,7 +47,6 @@
         body.dark-mode::before { background: #1E1E1E; }
         body.dark-mode h1, body.dark-mode h2 { color: #e8e8e8; }
 
-        /* updated to match MLSA accent */
         body.dark-mode .project-card {
             background: rgba(34, 27, 53, 0.85);
             border: 1px solid rgba(124, 90, 184, 0.6);
@@ -55,7 +54,6 @@
         body.dark-mode .project-card:hover { background: rgba(34, 27, 53, 0.95); }
         body.dark-mode .project-description { color: #e8e8e8; }
 
-        /* updated tags to match MLSA tags */
         body.dark-mode .tag {
             color: #e8e8e8;
             background: #2b2436;
@@ -75,12 +73,13 @@
         .intro a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
         .intro a:hover { opacity: 0.7; }
 
+        /* CHANGED HERE: brought the back-link higher */
         .projects-grid {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.2rem; /* reduced from 3rem */
         }
 
         .project-card {
@@ -129,12 +128,11 @@
             line-height: 1.6;
             color: #4a4a4a;
             margin-bottom: 1rem;
-            text-align: justify; /* made descriptions justified */
+            text-align: justify;
         }
 
         .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
-        /* updated tags to MLSA style */
         .tag {
             padding: 0.25rem 0.8rem;
             border-radius: 999px;
@@ -144,9 +142,10 @@
             color: #2c2c2c;
         }
 
+        /* CHANGED HERE: pulled link closer */
         .back-link {
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 0.2rem; /* reduced from 1rem */
             font-size: 1.1rem;
             color: #7c5ab8;
             text-decoration: none;
@@ -193,12 +192,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Projects I've worked on</h1>
         <p class="intro">Most of my projects are on my <a href="https://github.com/probablynotnmp?tab=repositories">GitHub</a>. List of a few are below.</p>
         
         <div class="projects-grid" id="projectsGrid">
+
+            <!-- CARDS (unchanged) -->
+
             <div class="project-card" data-id="prime-guessing">
                 <div class="project-header">
                     <a href="#" class="project-title">Prime-Guessing-Game</a>
@@ -255,11 +258,13 @@
                     <span class="tag">#holographic</span>
                 </div>
             </div>
+
         </div>
         
         <a href="https://prathyush.dev" class="back-link">← Back to home</a>
     </div>
 
+    <!-- SCRIPT (unchanged) -->
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
         <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
