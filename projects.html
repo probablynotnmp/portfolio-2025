@@ -73,13 +73,13 @@
         .intro a { color: #7c5ab8; text-decoration: none; transition: opacity 0.3s ease; }
         .intro a:hover { opacity: 0.7; }
 
-        /* CHANGED HERE: brought the back-link higher */
+        /* spacing between cards and Back to home */
         .projects-grid {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 1.2rem; /* reduced from 3rem */
+            margin-bottom: 2rem; /* total space part 1 */
         }
 
         .project-card {
@@ -142,10 +142,9 @@
             color: #2c2c2c;
         }
 
-        /* CHANGED HERE: pulled link closer */
         .back-link {
             display: inline-block;
-            margin-top: 0.2rem; /* reduced from 1rem */
+            margin-top: 0; /* total space part 2 (0) */
             font-size: 1.1rem;
             color: #7c5ab8;
             text-decoration: none;
@@ -199,8 +198,6 @@
         <p class="intro">Most of my projects are on my <a href="https://github.com/probablynotnmp?tab=repositories">GitHub</a>. List of a few are below.</p>
         
         <div class="projects-grid" id="projectsGrid">
-
-            <!-- CARDS (unchanged) -->
 
             <div class="project-card" data-id="prime-guessing">
                 <div class="project-header">
@@ -264,7 +261,6 @@
         <a href="https://prathyush.dev" class="back-link">← Back to home</a>
     </div>
 
-    <!-- SCRIPT (unchanged) -->
     <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
         <svg class="theme-icon moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
