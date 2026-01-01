@@ -1,11 +1,3 @@
-/**
- * Celebrations.js
- * Contains logic for Fireworks, Confetti, and Snow animations.
- * Created for Prathyush N M
- */
-
-// --- UTILITY LIBRARIES ---
-
 const MyMath = {
     random: (min, max) => Math.random() * (max - min) + min,
     randomInt: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
